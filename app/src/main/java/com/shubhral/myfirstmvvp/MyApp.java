@@ -1,8 +1,10 @@
 package com.shubhral.myfirstmvvp;
 
+import android.app.Activity;
 import android.app.Application;
 
 import com.shubhral.myfirstmvvp.di.ContextModule;
+import com.shubhral.myfirstmvvp.di.DaggerGithubApplicationComponent;
 import com.shubhral.myfirstmvvp.di.GithubApplicationComponent;
 
 import timber.log.Timber;
@@ -12,6 +14,10 @@ import timber.log.Timber;
  */
 
 public class MyApp extends Application {
+
+    public static MyApp get(Activity activity) {
+        return (MyApp) activity.getApplicationContext();
+    }
 
     @Override
     public void onCreate() {
