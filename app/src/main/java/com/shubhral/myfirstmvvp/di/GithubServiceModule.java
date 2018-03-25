@@ -17,11 +17,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GithubServiceModule {
 
     @Provides
+    @GithubApplicationScope
     public Gson providesGson() {
         return new GsonBuilder().create();
     }
 
     @Provides
+    @GithubApplicationScope
     public Retrofit providesRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl("https://api.github.com/")
@@ -31,6 +33,7 @@ public class GithubServiceModule {
     }
 
     @Provides
+    @GithubApplicationScope
     public GithubService providesGithubService(Retrofit retrofit) {
         return retrofit.create(GithubService.class);
     }
