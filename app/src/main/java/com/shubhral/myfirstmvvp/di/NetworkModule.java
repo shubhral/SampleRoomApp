@@ -16,13 +16,13 @@ import timber.log.Timber;
 public class NetworkModule {
 
     @Provides
-    @GithubApplicationScope
+    @ApplicationScope
     public Cache providesCache(Context context) {
         return new Cache(context.getCacheDir(), 10 * 1024 * 1024);
     }
 
     @Provides
-    @GithubApplicationScope
+    @ApplicationScope
     public HttpLoggingInterceptor providesHttpLoggingInterceptor() {
         return new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
@@ -33,7 +33,7 @@ public class NetworkModule {
     }
 
     @Provides
-    @GithubApplicationScope
+    @ApplicationScope
     public OkHttpClient providesOkHttpClient(HttpLoggingInterceptor interceptor, Cache cache) {
         return new OkHttpClient.Builder()
                 .addInterceptor(interceptor)

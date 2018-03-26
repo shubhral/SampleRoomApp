@@ -16,13 +16,13 @@ import okhttp3.OkHttpClient;
 public class PicassoModule {
 
     @Provides
-    @GithubApplicationScope
+    @ApplicationScope
     public OkHttp3Downloader providesOkHttp3Downloader(OkHttpClient okHttpClient) {
         return new OkHttp3Downloader(okHttpClient);
     }
 
     @Provides
-    @GithubApplicationScope
+    @ApplicationScope
     public Picasso providesPicasso(Context context, OkHttp3Downloader okHttp3Downloader) {
         return new Picasso.Builder(context)
                 .downloader(okHttp3Downloader)

@@ -3,9 +3,9 @@ package com.shubhral.myfirstmvvp;
 import android.app.Activity;
 import android.app.Application;
 
+import com.shubhral.myfirstmvvp.di.ApplicationComponent;
 import com.shubhral.myfirstmvvp.di.ContextModule;
-import com.shubhral.myfirstmvvp.di.DaggerGithubApplicationComponent;
-import com.shubhral.myfirstmvvp.di.GithubApplicationComponent;
+import com.shubhral.myfirstmvvp.di.DaggerApplicationComponent;
 
 import timber.log.Timber;
 
@@ -14,6 +14,8 @@ import timber.log.Timber;
  */
 
 public class MyApp extends Application {
+
+    private ApplicationComponent applicationComponent;
 
     public static MyApp get(Activity activity) {
         return (MyApp) activity.getApplicationContext();
@@ -24,7 +26,11 @@ public class MyApp extends Application {
         super.onCreate();
         Timber.plant(new Timber.DebugTree());
 
-        GithubApplicationComponent component = DaggerGithubApplicationComponent.builder()
+        applicationComponent = DaggerApplicationComponent.builder()
                 .contextModule(new ContextModule(this)).build();
+    }
+
+    public ApplicationComponent getApplicationComponent() {
+        return applicationComponent;
     }
 }
