@@ -15,9 +15,13 @@ buildscript {
     }
 }
 
-ext.support_version = "27.1.0"
-ext.retrofit_version = "2.4.0"
-ext.dagger_version = "2.11"
+ext {
+    support_version = "27.1.0"
+    retrofit_version = "2.4.0"
+    dagger_version = "2.11"
+    roomVersion = '1.0.0'
+    archLifecycleVersion = '1.1.1'
+}
 
 allprojects {
     repositories {
