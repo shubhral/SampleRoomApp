@@ -1,13 +1,8 @@
 package com.shubhral.myfirstmvvp;
 
-import com.shubhral.myfirstmvvp.model.Repository;
-
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -16,6 +11,6 @@ import retrofit2.http.Query;
 public interface GithubService {
 
     @GET("/search/repositories")
-    Call<List<Repository>> getRepositoriesByTopic(@Query("q") String topic,
-                                           @Query("page") long pageNumber);
+    Call<Response> getRepositoriesByTopic(@Query("q") String topic,
+                                          @Query("page") long pageNumber);
 }
